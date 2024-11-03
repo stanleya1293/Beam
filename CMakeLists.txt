@@ -1,6 +1,8 @@
+
+cmake_minimum_required(VERSION 3.10)
 project(Beam)
-add_executable(Beam ./src/main.cpp)
-include_directories(./headers)
+add_executable(Beam ./src/main.cpp ${CMAKE_CURRENT_SOURCE_DIR}/includes/Window.h)
+target_include_directories(Beam PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/includes)
 add_subdirectory(./lib/glad)
 target_link_libraries(Beam PRIVATE glad)
 add_subdirectory(./lib/glfw-3.4)
