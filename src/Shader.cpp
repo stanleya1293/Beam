@@ -72,6 +72,10 @@ void Shader::use() {
     glUseProgram(m_shaderID);
 }
 
+unsigned int Shader::getShaderID() {
+	return m_shaderID;
+}
+
 Shader::~Shader() {
 
 }

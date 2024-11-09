@@ -46,5 +46,9 @@ Renderer::~Renderer() {
 
 void Renderer::draw() {
 	shader->use();
+	float time = glfwGetTime();
+	float greenValue = sin(time) / 2.0f + 0.0f;
+	int vertexLocation = glGetUniformLocation(shader->getShaderID(), "fadeScalar");
+	glUniform1f(vertexLocation, greenValue);
 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 }
