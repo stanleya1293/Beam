@@ -8,12 +8,15 @@ class Window
 {
 	public:
 		Window(int width, int height, std::string title);
+		Window();
 		~Window();
+		bool running();
+		void update();
 	private:
-		GLFWwindow* p_window;
-		int p_height;
-		int p_width;
-		std::string p_title;
+		GLFWwindow* m_windowID;
+		int m_height;
+		int m_width;
+		std::string m_title;
 };
 
 #endif

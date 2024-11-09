@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(Beam)
-add_executable(Beam ./src/main.cpp ./src/Window.cpp ./src/Renderer.cpp)
+add_executable(Beam ./src/main.cpp ./src/Window.cpp ./src/Renderer.cpp ./src/Scene.cpp)
 target_include_directories(Beam PRIVATE ${CMAKE_SOURCE_DIR}/includes)
 add_subdirectory(./lib/glad)
 target_link_libraries(Beam PRIVATE glad)

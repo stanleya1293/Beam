@@ -1,9 +1,7 @@
-#include "Window.h"
-#include "Renderer.h"
-
+#include "Scene.h"
 
 int main() {
-	Window window(600, 600, "test");
-	Renderer renderer;
+	Scene scene;
+	scene.start();
 	return 0;
 }
