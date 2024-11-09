@@ -1,7 +1,7 @@
-#include "Scene.h"
+#include "Game.h"
 
 int main() {
-	Scene scene;
-	scene.start();
+	Game game;
+	game.start();
 	return 0;
 }
