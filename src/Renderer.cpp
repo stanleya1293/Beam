@@ -37,18 +37,18 @@ Renderer::Renderer()
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (float*) (3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	shader = new Shader("shaders/vertexShader.vs", "shaders/fragmentShader.fs");
+	shaders.push_back(Shader("shaders/vertexShader.vs", "shaders/fragmentShader.fs"));
 }
 
 Renderer::~Renderer() {
-	delete shader;
+	
 }
 
 void Renderer::draw() {
-	shader->use();
+	shaders[0].use();
 	float time = glfwGetTime();
 	float greenValue = sin(time) / 2.0f + 0.0f;
-	int vertexLocation = glGetUniformLocation(shader->getShaderID(), "fadeScalar");
+	int vertexLocation = glGetUniformLocation(shaders[0].getShaderID(), "fadeScalar");
 	glUniform1f(vertexLocation, greenValue);
 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 }

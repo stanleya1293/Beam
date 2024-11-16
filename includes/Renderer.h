@@ -12,7 +12,7 @@ public:
 	~Renderer();
 	void draw();
 private:
-	Shader* shader;
+	std::vector<Shader> shaders;
 };
 
 #endif

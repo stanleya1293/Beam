@@ -14,7 +14,7 @@ public:
     void use();
     unsigned int getShaderID();
 private:
-    unsigned int m_shaderID;
+    unsigned int _shaderID;
 };
 
 #endif

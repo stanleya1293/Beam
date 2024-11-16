@@ -7,16 +7,16 @@
 class Window 
 {
 	public:
-		Window(int width, int height, std::string title) : width_(width) height_(height) title_(title);
+		Window(int width, int height, std::string title);
 		Window();
 		~Window();
 		bool running();
 		void update();
 	private:
-		GLFWwindow* m_windowID;
-		int height_;
-		int width_;
-		std::string title_;
+		GLFWwindow* _windowID;
+		int _height;
+		int _width;
+		std::string _title;
 };
 
 #endif

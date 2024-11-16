@@ -2,13 +2,11 @@
 
 
 
-Window::Window(int width, int height, std::string title) {
-	m_title = title;
-	m_width = width;
-	m_height = height;
+Window::Window(int width, int height, std::string title) : _width(width), _height(height), _title(title) {
+	
 	glfwInit();
-	m_windowID = glfwCreateWindow(m_width, m_height, m_title.c_str(), NULL, NULL);
-	glfwMakeContextCurrent(m_windowID);
+	_windowID = glfwCreateWindow(_width, _height, _title.c_str(), NULL, NULL);
+	glfwMakeContextCurrent(_windowID);
 	gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 }
 
@@ -18,25 +16,25 @@ Window::Window() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	m_windowID = glfwCreateWindow(800, 800, "Test", NULL, NULL);
-	glfwMakeContextCurrent(m_windowID);
+	_windowID = glfwCreateWindow(800, 800, "Test", NULL, NULL);
+	glfwMakeContextCurrent(_windowID);
 	gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 }
 
 Window::~Window() {
-	glfwDestroyWindow(m_windowID);
+	glfwDestroyWindow(_windowID);
 	glfwTerminate();
 }
 
 bool Window::running() {
-	if (!glfwWindowShouldClose(m_windowID))
+	if (!glfwWindowShouldClose(_windowID))
 		return true;
 	else
 		return false;
 } 
 
 void Window::update() {
-	glfwSwapBuffers(m_windowID);
+	glfwSwapBuffers(_windowID);
 	glfwPollEvents();
 	glClear(GL_COLOR_BUFFER_BIT);
 

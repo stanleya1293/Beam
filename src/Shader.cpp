@@ -57,11 +57,11 @@ Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath) {
 	}
 
 
-	m_shaderID = glCreateProgram();
+	_shaderID = glCreateProgram();
 
-	glAttachShader(m_shaderID, vertexShader);
-	glAttachShader(m_shaderID, fragmentShader);
-	glLinkProgram(m_shaderID);
+	glAttachShader(_shaderID, vertexShader);
+	glAttachShader(_shaderID, fragmentShader);
+	glLinkProgram(_shaderID);
 
 	glDeleteShader(fragmentShader);
 	glDeleteShader(vertexShader);
@@ -69,11 +69,11 @@ Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath) {
 }
 
 void Shader::use() {
-    glUseProgram(m_shaderID);
+    glUseProgram(_shaderID);
 }
 
 unsigned int Shader::getShaderID() {
-	return m_shaderID;
+	return _shaderID;
 }
 
 Shader::~Shader() {
