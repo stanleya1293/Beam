@@ -12,6 +12,7 @@ class Window
 		~Window();
 		bool isRunning();
 		void update();
+		inline GLFWwindow* getWindowID() { return _windowID; };
 	private:
 		GLFWwindow* _windowID;
 		int _height;

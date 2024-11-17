@@ -2,6 +2,7 @@
 #define APPLICATION_H
 #include "Window.h"
 #include "Renderer.h"
+#include "Camera.h"
 
 
 class Application {
@@ -9,9 +10,11 @@ public:
     Application();
     ~Application();
     void start();
+    void handleInput();
 private:
-    Window _window;
-    Renderer _renderer;
+    Window window;
+    Renderer renderer;
+    Camera camera;
 };
 
 #endif

@@ -8,6 +8,7 @@ Window::Window(int width, int height, std::string title) : _width(width), _heigh
 	_windowID = glfwCreateWindow(_width, _height, _title.c_str(), NULL, NULL);
 	glfwMakeContextCurrent(_windowID);
 	gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+	
 }
 
 Window::Window() {
@@ -36,6 +37,6 @@ bool Window::isRunning() {
 void Window::update() {
 	glfwSwapBuffers(_windowID);
 	glfwPollEvents();
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 }
