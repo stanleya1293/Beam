@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "Shader.h"
+#include "Texture.h"
 
 class Renderer {
 public:
@@ -12,7 +13,8 @@ public:
 	~Renderer();
 	void draw();
 private:
-	std::vector<Shader> shaders;
+	std::vector<Shader> _shaders;
+	std::vector<Texture> _textures;
 };
 
 #endif

@@ -1,9 +1,49 @@
 #include "Texture.h"
 
-Texture::Texture() {
-    float texCoords[] = {
-        0.0f, 0.0f,
-        1.0f, 0.0f,
-        0.5f, 1.0f,
-    }
+Texture::Texture(const char* texturePath, TextureType type) : _count(0) {
+	glGenTextures(1, &_textureID);
+	glBindTexture(GL_TEXTURE_2D, _textureID);
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char* data = stbi_load(texturePath, &_width, &_height, &_nrChannels, STBI_rgb_alpha);
+	switch (type) {
+	case JPG:
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		break;
+	case PNG:
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		break;
+	}
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	static int count = 0;
+	count++;
+	_count = count;
+
+	stbi_image_free(data);
+}
+
+Texture::~Texture() {
+
+}
+
+void Texture::use() {
+	switch (_count) {
+	case 0:
+		glActiveTexture(GL_TEXTURE0);
+		break;
+	case 1:
+		glActiveTexture(GL_TEXTURE1);
+		break;
+	case 2:
+		glActiveTexture(GL_TEXTURE2);
+		break;
+	case 3:
+		glActiveTexture(GL_TEXTURE3);
+		break;
+	case 4:
+		glActiveTexture(GL_TEXTURE4);
+		break;
+	}
+	
+	glBindTexture(GL_TEXTURE_2D, _textureID);
 }

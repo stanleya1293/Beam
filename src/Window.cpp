@@ -26,7 +26,7 @@ Window::~Window() {
 	glfwTerminate();
 }
 
-bool Window::running() {
+bool Window::isRunning() {
 	if (!glfwWindowShouldClose(_windowID))
 		return true;
 	else

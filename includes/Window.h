@@ -10,7 +10,7 @@ class Window
 		Window(int width, int height, std::string title);
 		Window();
 		~Window();
-		bool running();
+		bool isRunning();
 		void update();
 	private:
 		GLFWwindow* _windowID;

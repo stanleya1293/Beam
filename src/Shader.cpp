@@ -3,14 +3,12 @@
 Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath) {
     std::string vertexShaderCode;
     std::string fragmentShaderCode;
-    std::ifstream vertexShaderFile;
-    std::ifstream fragmentShaderFile;
+    std::ifstream vertexShaderFile(vertexShaderPath);
+    std::ifstream fragmentShaderFile(fragmentShaderPath);
 
     std::stringstream vertexShaderStream;
     std::stringstream fragmentShaderStream;
 
-    vertexShaderFile.open(vertexShaderPath);
-    fragmentShaderFile.open(fragmentShaderPath);
     if (vertexShaderFile.fail()) {
         std::cout << "Something went wrong with the fragment shader loading!\n";
     }
@@ -29,10 +27,8 @@ Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath) {
     const char* vertexShaderSource = vertexShaderCode.c_str();
     const char* fragmentShaderSource = fragmentShaderCode.c_str();
 
-    unsigned int fragmentShader;
-	unsigned int vertexShader;
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		
 
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);

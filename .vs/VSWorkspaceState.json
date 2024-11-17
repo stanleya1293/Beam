@@ -1,0 +1,17 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "build",
+      "out\\install\\x64-Debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "",
+    "\\assets",
+    "\\includes",
+    "\\shaders",
+    "\\src"
+  ],
+  "SelectedNode": "\\src\\Texture.cpp",
+  "PreviewInSolutionExplorer": false
+}

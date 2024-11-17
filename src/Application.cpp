@@ -9,7 +9,7 @@ Application::~Application() {
 }
 
 void Application::start() {
-    while (_window.running()) 
+    while (_window.isRunning()) 
 	{
         _renderer.draw();
         _window.update();
