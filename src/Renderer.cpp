@@ -57,25 +57,25 @@ Renderer::Renderer()
 		0, 2, 3
 	};
 	//general
-	unsigned int vao;
+	unsigned int gutsVAO;
 	unsigned int vbo;
 	unsigned int ebo;
 
-	//glGenVertexArrays(1, &vao);
-	//glBindVertexArray(vao);
+	glGenVertexArrays(1, &gutsVAO);
+	glBindVertexArray(gutsVAO);
 
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//glGenBuffers(1, &ebo);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	glGenBuffers(1, &ebo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	//glEnableVertexAttribArray(0);
-	//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	//glEnableVertexAttribArray(1);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
 	//light based
 
@@ -87,6 +87,7 @@ Renderer::Renderer()
 	glEnableVertexAttribArray(0);
 
 	rendererVAOs.push_back(lightVAO); //lightcube VAO index 0
+	rendererVAOs.push_back(gutsVAO); //guts VAO index 1
 
 	rendererShaders.push_back(Shader("../shaders/vertexShader.vs", "../shaders/fragmentShader.fs")); //regular cube index 0
 	rendererShaders.push_back(Shader("../shaders/lightCubeShader.vs", "../shaders/lightCubeShader.fs")); //light cube index 1
@@ -107,7 +108,8 @@ Renderer::~Renderer() {}
 
 void Renderer::draw() 
 {
-	/*glm::vec3 cubePositions[] =
+	setActiveShader(2);
+	glm::vec3 cubePositions[] =
 	{
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(2.0f, 5.0f, -15.0f),
@@ -137,7 +139,6 @@ void Renderer::draw()
 		
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
-	*/
 }
 
 void Renderer::draw(unsigned int shaderIndex, glm::mat4 modelMatrix) 
