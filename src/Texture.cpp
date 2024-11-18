@@ -1,33 +1,34 @@
 #include "Texture.h"
 
-Texture::Texture(const char* texturePath, TextureType type) : _count(0) {
-	glGenTextures(1, &_textureID);
-	glBindTexture(GL_TEXTURE_2D, _textureID);
+Texture::Texture(const char* texturePath, TextureType type) : textureCount(0) 
+{
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char* data = stbi_load(texturePath, &_width, &_height, &_nrChannels, STBI_rgb_alpha);
+	unsigned char* data = stbi_load(texturePath, &textureWidth, &textureHeight, &textureNrChannels, STBI_rgb_alpha);
 	switch (type) {
 	case JPG:
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		break;
 	case PNG:
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _width, _height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		break;
 	}
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	static int count = 0;
 	count++;
-	_count = count;
+	textureCount = count;
 
 	stbi_image_free(data);
 }
 
-Texture::~Texture() {
+Texture::~Texture() {}
 
-}
-
-void Texture::use() {
-	switch (_count) {
+void Texture::use() 
+{
+	switch (textureCount) 
+	{
 	case 0:
 		glActiveTexture(GL_TEXTURE0);
 		break;
@@ -45,5 +46,5 @@ void Texture::use() {
 		break;
 	}
 	
-	glBindTexture(GL_TEXTURE_2D, _textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 }

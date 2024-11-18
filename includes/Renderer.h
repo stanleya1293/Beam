@@ -11,17 +11,21 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-class Renderer {
+class Renderer 
+{
 public:
 	Renderer();
 	~Renderer();
 	void draw();
+	void draw(unsigned int shaderIndex, glm::mat4 modelMatrix);
 	void setActiveShader(int index);
 	inline static Shader getActiveShader() { return activeShader; };
 private:
-	std::vector<Shader> _shaders;
-	std::vector<Texture> _textures;
+	std::vector<Shader> rendererShaders;
+	std::vector<Texture> rendererTextures;
+	std::vector<unsigned int> rendererVAOs;
 	static Shader activeShader;
 };
+
 
 #endif

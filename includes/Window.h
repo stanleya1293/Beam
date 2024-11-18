@@ -12,12 +12,12 @@ class Window
 		~Window();
 		bool isRunning();
 		void update();
-		inline GLFWwindow* getWindowID() { return _windowID; };
+		inline GLFWwindow* getWindowID() { return windowID; };
 	private:
-		GLFWwindow* _windowID;
-		int _height;
-		int _width;
-		std::string _title;
+		GLFWwindow* windowID;
+		int winHeight;
+		int winWidth;
+		std::string winTitle;
 };
 
 #endif

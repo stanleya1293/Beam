@@ -7,9 +7,11 @@
 #include "Renderer.h"
 
 
-class Camera {
+class Camera 
+{
 public:
-	enum Direction {
+	enum Direction 
+	{
 		Left, Right, Forward, Backward
 	};
 	Camera(float x, float y, float z);
@@ -17,12 +19,22 @@ public:
 	~Camera();
 	void update();
 	void move(Direction dir);
+	void setZoom(float fov);
+	void setDirection(float yaw, float pitch);
+	inline void rotate(float xOffset, float yOffset) { setDirection((cameraYaw + xOffset), (cameraPitch + yOffset)); };
+	inline void zoom(float offset) { setZoom(cameraFOV - offset); };
+	inline void setSpeed(float speed) { cameraSpeed = speed;  };
 private:
-	const glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-	const glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-	glm::vec3 cameraPosition;
-	glm::mat4 cameraView;
+	float cameraYaw;
+	float cameraPitch;
 	float cameraSpeed;
+	float cameraFOV;
+	const glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 cameraFront;
+	glm::vec3 cameraPosition;
+	glm::vec3 cameraDirection;
+	glm::mat4 cameraView;
+	glm::mat4 cameraProjection;
 };
 
 

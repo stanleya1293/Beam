@@ -5,7 +5,8 @@
 #include "Camera.h"
 
 
-class Application {
+class Application 
+{
 public:
     Application();
     ~Application();

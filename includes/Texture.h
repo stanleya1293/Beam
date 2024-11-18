@@ -4,9 +4,11 @@
 #include "stb_image.h"
 
 
-class Texture {
+class Texture 
+{
 public:
-    enum TextureType {
+    enum TextureType 
+    {
         PNG,
         JPG,
         JPEG
@@ -15,11 +17,11 @@ public:
     ~Texture();
     void use();
 private:
-    unsigned int _textureID;
-    int _width;
-    int _height;
-    int _nrChannels;
-    int _count;
+    unsigned int textureID;
+    int textureWidth;
+    int textureHeight;
+    int textureNrChannels;
+    int textureCount;
 };
 
 #endif

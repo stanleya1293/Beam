@@ -7,15 +7,16 @@
 #include <iostream>
 
 
-class Shader {
+class Shader 
+{
 public:
     Shader();
     Shader(const char* vertexShaderPath, const char* fragmentShaderPath);
     ~Shader();
     void use();
-    unsigned int getShaderID();
+    inline unsigned int getShaderID() { return shaderID; };
 private:
-    unsigned int _shaderID;
+    unsigned int shaderID;
 };
 
 #endif
