@@ -1,2 +1,2 @@
-# Beam-RT
-C++ Raytracer
+# Beam
+C++ 3D renderer + scene editor.  
