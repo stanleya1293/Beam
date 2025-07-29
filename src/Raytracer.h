@@ -8,10 +8,7 @@ namespace Beam {
 	class Raytracer {
 	public:
 		Raytracer();
-		~Raytracer();
 		void RenderToFile(const Object& scene, const File& output);
-	private:
-		
 	};
 }
 

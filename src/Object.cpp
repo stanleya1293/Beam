@@ -4,8 +4,4 @@ namespace Beam {
 	Object::Object() {
 	
 	}
-
-	Object::~Object() {
-	
-	}
 }
